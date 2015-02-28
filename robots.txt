@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://robertknight.github.io/sitemap.xml 
