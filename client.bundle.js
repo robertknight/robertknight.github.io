@@ -5,8 +5,8 @@ webpackJsonp([2],[
 	/// <reference path="typings/tsd.d.ts" />
 	var react = __webpack_require__(2);
 	var react_router = __webpack_require__(9);
-	var data_source = __webpack_require__(3);
-	var routes = __webpack_require__(4);
+	var data_source = __webpack_require__(5);
+	var routes = __webpack_require__(6);
 	__webpack_require__(8);
 	function init(payload) {
 	    var componentLoader = new ComponentLoader();
@@ -48,7 +48,9 @@ webpackJsonp([2],[
 /***/ },
 /* 1 */,
 /* 2 */,
-/* 3 */
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var react = __webpack_require__(2);
@@ -127,7 +129,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 4 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __extends = this.__extends || function (d, b) {
@@ -242,8 +244,6 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 5 */,
-/* 6 */,
 /* 7 */,
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
@@ -2016,7 +2016,7 @@ webpackJsonp([2],[
 
 	"use strict";
 
-	var warning = __webpack_require__(72);
+	var warning = __webpack_require__(65);
 	var PropTypes = __webpack_require__(129);
 
 	function deprecatedMethod(routerMethodName, fn) {
@@ -2100,7 +2100,7 @@ webpackJsonp([2],[
 
 	"use strict";
 
-	var warning = __webpack_require__(72);
+	var warning = __webpack_require__(65);
 	var PropTypes = __webpack_require__(129);
 
 	function deprecatedMethod(routerMethodName, fn) {
@@ -2194,7 +2194,7 @@ webpackJsonp([2],[
 
 	var assign = __webpack_require__(33);
 	var invariant = __webpack_require__(63);
-	var warning = __webpack_require__(72);
+	var warning = __webpack_require__(65);
 	var PathUtils = __webpack_require__(132);
 
 	var _currentRoute;
@@ -2403,7 +2403,7 @@ webpackJsonp([2],[
 	/* jshint -W084 */
 	var React = __webpack_require__(2);
 	var assign = __webpack_require__(33);
-	var warning = __webpack_require__(72);
+	var warning = __webpack_require__(65);
 	var DefaultRoute = __webpack_require__(37);
 	var NotFoundRoute = __webpack_require__(39);
 	var Redirect = __webpack_require__(40);
@@ -2488,7 +2488,7 @@ webpackJsonp([2],[
 
 	/* jshint -W058 */
 	var React = __webpack_require__(2);
-	var warning = __webpack_require__(72);
+	var warning = __webpack_require__(65);
 	var invariant = __webpack_require__(63);
 	var canUseDOM = __webpack_require__(36).canUseDOM;
 	var LocationActions = __webpack_require__(131);
@@ -5255,8 +5255,8 @@ webpackJsonp([2],[
 	"use strict";
 
 	var invariant = __webpack_require__(63);
-	var objectAssign = __webpack_require__(188);
-	var qs = __webpack_require__(189);
+	var objectAssign = __webpack_require__(189);
+	var qs = __webpack_require__(188);
 
 	var paramCompileMatcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|[*.()\[\]\\+|{}^$]/g;
 	var paramInjectMatcher = /:([a-zA-Z_$][a-zA-Z0-9_$?]*[?]?)|[*]/g;
@@ -6039,6 +6039,13 @@ webpackJsonp([2],[
 /* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(257);
+
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	function ToObject(val) {
@@ -6065,13 +6072,6 @@ webpackJsonp([2],[
 
 		return to;
 	};
-
-
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(257);
 
 
 /***/ },
@@ -27460,8 +27460,8 @@ webpackJsonp([2],[
 	}
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 
-	  var base64VLQ = __webpack_require__(281);
-	  var util = __webpack_require__(278);
+	  var base64VLQ = __webpack_require__(278);
+	  var util = __webpack_require__(279);
 	  var ArraySet = __webpack_require__(280).ArraySet;
 
 	  /**
@@ -27846,10 +27846,10 @@ webpackJsonp([2],[
 	}
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 
-	  var util = __webpack_require__(278);
-	  var binarySearch = __webpack_require__(279);
+	  var util = __webpack_require__(279);
+	  var binarySearch = __webpack_require__(281);
 	  var ArraySet = __webpack_require__(280).ArraySet;
-	  var base64VLQ = __webpack_require__(281);
+	  var base64VLQ = __webpack_require__(278);
 
 	  /**
 	   * A SourceMapConsumer instance represents a parsed source map which we can
@@ -28330,7 +28330,7 @@ webpackJsonp([2],[
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 
 	  var SourceMapGenerator = __webpack_require__(275).SourceMapGenerator;
-	  var util = __webpack_require__(278);
+	  var util = __webpack_require__(279);
 
 	  /**
 	   * SourceNodes provide a way to abstract over interpolating/concatenating
@@ -28700,6 +28700,156 @@ webpackJsonp([2],[
 	 * Copyright 2011 Mozilla Foundation and contributors
 	 * Licensed under the New BSD license. See LICENSE or:
 	 * http://opensource.org/licenses/BSD-3-Clause
+	 *
+	 * Based on the Base 64 VLQ implementation in Closure Compiler:
+	 * https://code.google.com/p/closure-compiler/source/browse/trunk/src/com/google/debugging/sourcemap/Base64VLQ.java
+	 *
+	 * Copyright 2011 The Closure Compiler Authors. All rights reserved.
+	 * Redistribution and use in source and binary forms, with or without
+	 * modification, are permitted provided that the following conditions are
+	 * met:
+	 *
+	 *  * Redistributions of source code must retain the above copyright
+	 *    notice, this list of conditions and the following disclaimer.
+	 *  * Redistributions in binary form must reproduce the above
+	 *    copyright notice, this list of conditions and the following
+	 *    disclaimer in the documentation and/or other materials provided
+	 *    with the distribution.
+	 *  * Neither the name of Google Inc. nor the names of its
+	 *    contributors may be used to endorse or promote products derived
+	 *    from this software without specific prior written permission.
+	 *
+	 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+	 * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+	 * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+	 * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+	 * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+	 * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+	 * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+	 * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+	 * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+	 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+	 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	 */
+	if (false) {
+	    var define = require('amdefine')(module, require);
+	}
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+
+	  var base64 = __webpack_require__(282);
+
+	  // A single base 64 digit can contain 6 bits of data. For the base 64 variable
+	  // length quantities we use in the source map spec, the first bit is the sign,
+	  // the next four bits are the actual value, and the 6th bit is the
+	  // continuation bit. The continuation bit tells us whether there are more
+	  // digits in this value following this digit.
+	  //
+	  //   Continuation
+	  //   |    Sign
+	  //   |    |
+	  //   V    V
+	  //   101011
+
+	  var VLQ_BASE_SHIFT = 5;
+
+	  // binary: 100000
+	  var VLQ_BASE = 1 << VLQ_BASE_SHIFT;
+
+	  // binary: 011111
+	  var VLQ_BASE_MASK = VLQ_BASE - 1;
+
+	  // binary: 100000
+	  var VLQ_CONTINUATION_BIT = VLQ_BASE;
+
+	  /**
+	   * Converts from a two-complement value to a value where the sign bit is
+	   * is placed in the least significant bit.  For example, as decimals:
+	   *   1 becomes 2 (10 binary), -1 becomes 3 (11 binary)
+	   *   2 becomes 4 (100 binary), -2 becomes 5 (101 binary)
+	   */
+	  function toVLQSigned(aValue) {
+	    return aValue < 0
+	      ? ((-aValue) << 1) + 1
+	      : (aValue << 1) + 0;
+	  }
+
+	  /**
+	   * Converts to a two-complement value from a value where the sign bit is
+	   * is placed in the least significant bit.  For example, as decimals:
+	   *   2 (10 binary) becomes 1, 3 (11 binary) becomes -1
+	   *   4 (100 binary) becomes 2, 5 (101 binary) becomes -2
+	   */
+	  function fromVLQSigned(aValue) {
+	    var isNegative = (aValue & 1) === 1;
+	    var shifted = aValue >> 1;
+	    return isNegative
+	      ? -shifted
+	      : shifted;
+	  }
+
+	  /**
+	   * Returns the base 64 VLQ encoded value.
+	   */
+	  exports.encode = function base64VLQ_encode(aValue) {
+	    var encoded = "";
+	    var digit;
+
+	    var vlq = toVLQSigned(aValue);
+
+	    do {
+	      digit = vlq & VLQ_BASE_MASK;
+	      vlq >>>= VLQ_BASE_SHIFT;
+	      if (vlq > 0) {
+	        // There are still more digits in this value, so we must make sure the
+	        // continuation bit is marked.
+	        digit |= VLQ_CONTINUATION_BIT;
+	      }
+	      encoded += base64.encode(digit);
+	    } while (vlq > 0);
+
+	    return encoded;
+	  };
+
+	  /**
+	   * Decodes the next base 64 VLQ value from the given string and returns the
+	   * value and the rest of the string.
+	   */
+	  exports.decode = function base64VLQ_decode(aStr) {
+	    var i = 0;
+	    var strLen = aStr.length;
+	    var result = 0;
+	    var shift = 0;
+	    var continuation, digit;
+
+	    do {
+	      if (i >= strLen) {
+	        throw new Error("Expected more digits in base 64 VLQ value.");
+	      }
+	      digit = base64.decode(aStr.charAt(i++));
+	      continuation = !!(digit & VLQ_CONTINUATION_BIT);
+	      digit &= VLQ_BASE_MASK;
+	      result = result + (digit << shift);
+	      shift += VLQ_BASE_SHIFT;
+	    } while (continuation);
+
+	    return {
+	      value: fromVLQSigned(result),
+	      rest: aStr.slice(i)
+	    };
+	  };
+
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/* -*- Mode: js; js-indent-level: 2; -*- */
+	/*
+	 * Copyright 2011 Mozilla Foundation and contributors
+	 * Licensed under the New BSD license. See LICENSE or:
+	 * http://opensource.org/licenses/BSD-3-Clause
 	 */
 	if (false) {
 	    var define = require('amdefine')(module, require);
@@ -28903,93 +29053,6 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;/* -*- Mode: js; js-indent-level: 2; -*- */
-	/*
-	 * Copyright 2011 Mozilla Foundation and contributors
-	 * Licensed under the New BSD license. See LICENSE or:
-	 * http://opensource.org/licenses/BSD-3-Clause
-	 */
-	if (false) {
-	    var define = require('amdefine')(module, require);
-	}
-	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
-
-	  /**
-	   * Recursive implementation of binary search.
-	   *
-	   * @param aLow Indices here and lower do not contain the needle.
-	   * @param aHigh Indices here and higher do not contain the needle.
-	   * @param aNeedle The element being searched for.
-	   * @param aHaystack The non-empty array being searched.
-	   * @param aCompare Function which takes two elements and returns -1, 0, or 1.
-	   */
-	  function recursiveSearch(aLow, aHigh, aNeedle, aHaystack, aCompare) {
-	    // This function terminates when one of the following is true:
-	    //
-	    //   1. We find the exact element we are looking for.
-	    //
-	    //   2. We did not find the exact element, but we can return the next
-	    //      closest element that is less than that element.
-	    //
-	    //   3. We did not find the exact element, and there is no next-closest
-	    //      element which is less than the one we are searching for, so we
-	    //      return null.
-	    var mid = Math.floor((aHigh - aLow) / 2) + aLow;
-	    var cmp = aCompare(aNeedle, aHaystack[mid], true);
-	    if (cmp === 0) {
-	      // Found the element we are looking for.
-	      return aHaystack[mid];
-	    }
-	    else if (cmp > 0) {
-	      // aHaystack[mid] is greater than our needle.
-	      if (aHigh - mid > 1) {
-	        // The element is in the upper half.
-	        return recursiveSearch(mid, aHigh, aNeedle, aHaystack, aCompare);
-	      }
-	      // We did not find an exact match, return the next closest one
-	      // (termination case 2).
-	      return aHaystack[mid];
-	    }
-	    else {
-	      // aHaystack[mid] is less than our needle.
-	      if (mid - aLow > 1) {
-	        // The element is in the lower half.
-	        return recursiveSearch(aLow, mid, aNeedle, aHaystack, aCompare);
-	      }
-	      // The exact needle element was not found in this haystack. Determine if
-	      // we are in termination case (2) or (3) and return the appropriate thing.
-	      return aLow < 0
-	        ? null
-	        : aHaystack[aLow];
-	    }
-	  }
-
-	  /**
-	   * This is an implementation of binary search which will always try and return
-	   * the next lowest value checked if there is no exact hit. This is because
-	   * mappings between original and generated line/col pairs are single points,
-	   * and there is an implicit region between each of them, so a miss just means
-	   * that you aren't on the very start of a region.
-	   *
-	   * @param aNeedle The element you are looking for.
-	   * @param aHaystack The array that is being searched.
-	   * @param aCompare A function which takes the needle and an element in the
-	   *     array and returns -1, 0, or 1 depending on whether the needle is less
-	   *     than, equal to, or greater than the element, respectively.
-	   */
-	  exports.search = function search(aNeedle, aHaystack, aCompare) {
-	    return aHaystack.length > 0
-	      ? recursiveSearch(-1, aHaystack.length, aNeedle, aHaystack, aCompare)
-	      : null;
-	  };
-
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ },
 /* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29004,7 +29067,7 @@ webpackJsonp([2],[
 	}
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 
-	  var util = __webpack_require__(278);
+	  var util = __webpack_require__(279);
 
 	  /**
 	   * A data structure which is a combination of an array and a set. Adding a new
@@ -29101,142 +29164,79 @@ webpackJsonp([2],[
 	 * Copyright 2011 Mozilla Foundation and contributors
 	 * Licensed under the New BSD license. See LICENSE or:
 	 * http://opensource.org/licenses/BSD-3-Clause
-	 *
-	 * Based on the Base 64 VLQ implementation in Closure Compiler:
-	 * https://code.google.com/p/closure-compiler/source/browse/trunk/src/com/google/debugging/sourcemap/Base64VLQ.java
-	 *
-	 * Copyright 2011 The Closure Compiler Authors. All rights reserved.
-	 * Redistribution and use in source and binary forms, with or without
-	 * modification, are permitted provided that the following conditions are
-	 * met:
-	 *
-	 *  * Redistributions of source code must retain the above copyright
-	 *    notice, this list of conditions and the following disclaimer.
-	 *  * Redistributions in binary form must reproduce the above
-	 *    copyright notice, this list of conditions and the following
-	 *    disclaimer in the documentation and/or other materials provided
-	 *    with the distribution.
-	 *  * Neither the name of Google Inc. nor the names of its
-	 *    contributors may be used to endorse or promote products derived
-	 *    from this software without specific prior written permission.
-	 *
-	 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	 * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	 * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-	 * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-	 * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-	 * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-	 * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-	 * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-	 * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-	 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-	 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	 */
 	if (false) {
 	    var define = require('amdefine')(module, require);
 	}
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 
-	  var base64 = __webpack_require__(282);
-
-	  // A single base 64 digit can contain 6 bits of data. For the base 64 variable
-	  // length quantities we use in the source map spec, the first bit is the sign,
-	  // the next four bits are the actual value, and the 6th bit is the
-	  // continuation bit. The continuation bit tells us whether there are more
-	  // digits in this value following this digit.
-	  //
-	  //   Continuation
-	  //   |    Sign
-	  //   |    |
-	  //   V    V
-	  //   101011
-
-	  var VLQ_BASE_SHIFT = 5;
-
-	  // binary: 100000
-	  var VLQ_BASE = 1 << VLQ_BASE_SHIFT;
-
-	  // binary: 011111
-	  var VLQ_BASE_MASK = VLQ_BASE - 1;
-
-	  // binary: 100000
-	  var VLQ_CONTINUATION_BIT = VLQ_BASE;
-
 	  /**
-	   * Converts from a two-complement value to a value where the sign bit is
-	   * is placed in the least significant bit.  For example, as decimals:
-	   *   1 becomes 2 (10 binary), -1 becomes 3 (11 binary)
-	   *   2 becomes 4 (100 binary), -2 becomes 5 (101 binary)
+	   * Recursive implementation of binary search.
+	   *
+	   * @param aLow Indices here and lower do not contain the needle.
+	   * @param aHigh Indices here and higher do not contain the needle.
+	   * @param aNeedle The element being searched for.
+	   * @param aHaystack The non-empty array being searched.
+	   * @param aCompare Function which takes two elements and returns -1, 0, or 1.
 	   */
-	  function toVLQSigned(aValue) {
-	    return aValue < 0
-	      ? ((-aValue) << 1) + 1
-	      : (aValue << 1) + 0;
+	  function recursiveSearch(aLow, aHigh, aNeedle, aHaystack, aCompare) {
+	    // This function terminates when one of the following is true:
+	    //
+	    //   1. We find the exact element we are looking for.
+	    //
+	    //   2. We did not find the exact element, but we can return the next
+	    //      closest element that is less than that element.
+	    //
+	    //   3. We did not find the exact element, and there is no next-closest
+	    //      element which is less than the one we are searching for, so we
+	    //      return null.
+	    var mid = Math.floor((aHigh - aLow) / 2) + aLow;
+	    var cmp = aCompare(aNeedle, aHaystack[mid], true);
+	    if (cmp === 0) {
+	      // Found the element we are looking for.
+	      return aHaystack[mid];
+	    }
+	    else if (cmp > 0) {
+	      // aHaystack[mid] is greater than our needle.
+	      if (aHigh - mid > 1) {
+	        // The element is in the upper half.
+	        return recursiveSearch(mid, aHigh, aNeedle, aHaystack, aCompare);
+	      }
+	      // We did not find an exact match, return the next closest one
+	      // (termination case 2).
+	      return aHaystack[mid];
+	    }
+	    else {
+	      // aHaystack[mid] is less than our needle.
+	      if (mid - aLow > 1) {
+	        // The element is in the lower half.
+	        return recursiveSearch(aLow, mid, aNeedle, aHaystack, aCompare);
+	      }
+	      // The exact needle element was not found in this haystack. Determine if
+	      // we are in termination case (2) or (3) and return the appropriate thing.
+	      return aLow < 0
+	        ? null
+	        : aHaystack[aLow];
+	    }
 	  }
 
 	  /**
-	   * Converts to a two-complement value from a value where the sign bit is
-	   * is placed in the least significant bit.  For example, as decimals:
-	   *   2 (10 binary) becomes 1, 3 (11 binary) becomes -1
-	   *   4 (100 binary) becomes 2, 5 (101 binary) becomes -2
+	   * This is an implementation of binary search which will always try and return
+	   * the next lowest value checked if there is no exact hit. This is because
+	   * mappings between original and generated line/col pairs are single points,
+	   * and there is an implicit region between each of them, so a miss just means
+	   * that you aren't on the very start of a region.
+	   *
+	   * @param aNeedle The element you are looking for.
+	   * @param aHaystack The array that is being searched.
+	   * @param aCompare A function which takes the needle and an element in the
+	   *     array and returns -1, 0, or 1 depending on whether the needle is less
+	   *     than, equal to, or greater than the element, respectively.
 	   */
-	  function fromVLQSigned(aValue) {
-	    var isNegative = (aValue & 1) === 1;
-	    var shifted = aValue >> 1;
-	    return isNegative
-	      ? -shifted
-	      : shifted;
-	  }
-
-	  /**
-	   * Returns the base 64 VLQ encoded value.
-	   */
-	  exports.encode = function base64VLQ_encode(aValue) {
-	    var encoded = "";
-	    var digit;
-
-	    var vlq = toVLQSigned(aValue);
-
-	    do {
-	      digit = vlq & VLQ_BASE_MASK;
-	      vlq >>>= VLQ_BASE_SHIFT;
-	      if (vlq > 0) {
-	        // There are still more digits in this value, so we must make sure the
-	        // continuation bit is marked.
-	        digit |= VLQ_CONTINUATION_BIT;
-	      }
-	      encoded += base64.encode(digit);
-	    } while (vlq > 0);
-
-	    return encoded;
-	  };
-
-	  /**
-	   * Decodes the next base 64 VLQ value from the given string and returns the
-	   * value and the rest of the string.
-	   */
-	  exports.decode = function base64VLQ_decode(aStr) {
-	    var i = 0;
-	    var strLen = aStr.length;
-	    var result = 0;
-	    var shift = 0;
-	    var continuation, digit;
-
-	    do {
-	      if (i >= strLen) {
-	        throw new Error("Expected more digits in base 64 VLQ value.");
-	      }
-	      digit = base64.decode(aStr.charAt(i++));
-	      continuation = !!(digit & VLQ_CONTINUATION_BIT);
-	      digit &= VLQ_BASE_MASK;
-	      result = result + (digit << shift);
-	      shift += VLQ_BASE_SHIFT;
-	    } while (continuation);
-
-	    return {
-	      value: fromVLQSigned(result),
-	      rest: aStr.slice(i)
-	    };
+	  exports.search = function search(aNeedle, aHaystack, aCompare) {
+	    return aHaystack.length > 0
+	      ? recursiveSearch(-1, aHaystack.length, aNeedle, aHaystack, aCompare)
+	      : null;
 	  };
 
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
