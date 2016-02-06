@@ -10,7 +10,7 @@ When layouts in a UI are not behaving as expected or performance is poor, it can
 	* Changes to the `sizePolicy()` of the widget
 	* Changes to the layout() of the widget, such as new child widgets being added or removed
     
-1. The widget calls QWidget::updateGeometry() which then performs several steps to trigger a layout:
+1. The widget calls `QWidget::updateGeometry()` which then performs several steps to trigger a layout:
 	1. It invalidates any cached size information for the QWidgetItem associated with the widget in the parent layout.
 	1. It recursively climbs up the widget tree (first to the parent widget, then the grandparent and so on), invalidating that widget's layout. The process stops when we reach a widget that is a top level window or doesn't have its own layout - we'll call this widget the top-level widget, though it might not actually be a window.
 
@@ -18,7 +18,7 @@ When layouts in a UI are not behaving as expected or performance is poor, it can
 
 1. If the top-level widget is shown, a LayoutRequest event is posted asynchronously to the top-level widget, so a layout will be performed on the next pass through the event loop.
 
-1. If multiple layout requests are posted to the same top-level widget during a pass through the event loop, they will get compressed into a single layout request. This is similar to the way that multiple QWidget::update() requests are compressed into a single paint event.
+1. If multiple layout requests are posted to the same top-level widget during a pass through the event loop, they will get compressed into a single layout request. This is similar to the way that multiple `QWidget::update()` requests are compressed into a single paint event.
 
 1. The top-level widget receives the LayoutRequest event on the next pass through the event loop. This can then be handled in one of two ways:
 	1. If the widget has a layout, the layout will intercept the LayoutRequest event using an event filter and handle it by calling QLayout::activate()
