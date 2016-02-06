@@ -193,11 +193,11 @@ in Webpack. The other ones are:
    of vendor code.
 
    The advantage is that you only need one Webpack configuration.
-   The disadvantage is that the 'commons' chunk will be
-   recompiled every time you run Webpack.
+   The disadvantage for large projects is that the 'commons'
+   chunk will be recompiled every time you run Webpack.
 
  * [**Code splitting**](https://webpack.github.io/docs/code-splitting.html) via `require.ensure()` allows lazy-loading
    of chunks of code as particular pages or features are used.
    This is useful to optimize the initial page load time by keeping
-   the initial bundle small and then pulling in code for lesser-used
+   the main bundle small and then pulling in code for lesser-used
    features on-demand.
