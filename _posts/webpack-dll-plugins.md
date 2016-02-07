@@ -67,25 +67,29 @@ module.exports = {
     // create two library bundles, one with jQuery and
     // another with Angular and related libraries
     'jquery': ['jquery'],
-	'angular': ['angular', 'angular-router', 'angular-sanitize']
+    'angular': ['angular', 'angular-router', 'angular-sanitize']
   },
 
   output: {
     filename: '[name].bundle.js',
-	path: 'dist/'
+    path: 'dist/'
+
+    // The name of the global variable which the library's
+    // require() function will be assigned to
+    library: '[name]_lib',
   },
 
   plugins: {
     new webpack.DllPlugin({
-	  // The path to the manifest file which maps between
-	  // modules included in a bundle and the internal IDs
-	  // within that bundle
-	  path: 'dist/[name]-manifest.json',
-
-	  // The name of the global variable which the library's
-	  // require() function will be assigned to
-	  name: '[name]_lib'
-	}),
+      // The path to the manifest file which maps between
+      // modules included in a bundle and the internal IDs
+      // within that bundle
+      path: 'dist/[name]-manifest.json',
+      // The name of the global variable which the library's
+      // require function has been assigned to. This must match the
+      // output.library option above
+      name: '[name]_lib'
+    }),
   },
 }
 ```
@@ -172,10 +176,8 @@ module.exports = (__webpack_require__(3))(1)
 module.exports = angular_lib
 ```
 
-## Multiple tiers of library
+A minimal complete example can be found [in this Gist](https://gist.github.com/robertknight/058a194f45e77ff95fcd).
 
-In this example, the code is divided into just two layers - library and application bundles
-but you can reference a library bundle from another library bundle.
 
 ## Comparison with other code splitting methods
 
