@@ -72,14 +72,14 @@ module.exports = {
 
   output: {
     filename: '[name].bundle.js',
-    path: 'dist/'
+    path: 'dist/',
 
     // The name of the global variable which the library's
     // require() function will be assigned to
     library: '[name]_lib',
   },
 
-  plugins: {
+  plugins: [
     new webpack.DllPlugin({
       // The path to the manifest file which maps between
       // modules included in a bundle and the internal IDs
@@ -90,7 +90,7 @@ module.exports = {
       // output.library option above
       name: '[name]_lib'
     }),
-  },
+  ],
 }
 ```
 
@@ -146,16 +146,16 @@ module.exports = {
     app: './src/index'
   },
 
-  plugins: {
+  plugins: [
     new webpack.DllReferencePlugin({
 	  context: '.',
-	  manifest: require('dist/jquery-manifest.json')
+	  manifest: require('./dist/jquery-manifest.json')
 	}),
 	new webpack.DllReferencePlugin({
 	  context: '.',
-	  manifest: require('dist/angular-manifest.json')
+	  manifest: require('./dist/angular-manifest.json')
 	}),
-  }
+  ]
 }
 ```
 
